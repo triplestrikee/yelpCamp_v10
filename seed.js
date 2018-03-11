@@ -24,36 +24,36 @@ var data = [
 function seedDB(){
     //remove all campgrounds
     Campground.remove({},function(err){
-        // if(err){
-        //     console.log(err);
-        // } else {
-        //     console.log("removed all campgrounds");
-        //         data.forEach(function(seed){
-        //         // create campground
-        //         Campground.create(seed, function(err, campground){
-        //           if(err){
-        //               console.log(err);
-        //           } else {
-        //               console.log("added " + campground.name);
-        //               Comment.create(
-        //                     {
-        //                         text: "this place is bullsh*t",
-        //                         author: "triplestrikee"
-        //                     }, function(err, comment){
-        //                       if(err){
-        //                           console.log(err);
-        //                       } else {
-        //                           //push Id (reference schema)
-        //                           campground.comments.push(comment);
-        //                           campground.save();
-        //                           //console.log("comment._id" + comment._id);
-        //                           //console.log(comment);
-        //                       }
-        //               });
-        //           }
-        //         });
-        //     });
-        // }
+        if(err){
+            console.log(err);
+        } else {
+            console.log("removed all campgrounds");
+                data.forEach(function(seed){
+                // create campground
+                Campground.create(seed, function(err, campground){
+                  if(err){
+                      console.log(err);
+                  } else {
+                      console.log("added " + campground.name);
+                      Comment.create(
+                            {
+                                text: "this place is bullsh*t",
+                                author: "triplestrikee"
+                            }, function(err, comment){
+                              if(err){
+                                  console.log(err);
+                              } else {
+                                  //push Id (reference schema)
+                                  campground.comments.push(comment);
+                                  campground.save();
+                                  //console.log("comment._id" + comment._id);
+                                  //console.log(comment);
+                              }
+                      });
+                  }
+                });
+            });
+        }
     });
 
 }
