@@ -19,10 +19,13 @@
                     <p>
                         <em>Submitted By <%= campground.author.username %></em>
                     </p>
+                    <!--hiding the buttons if user is not logged in-->
+                    <% if(currentUser && foundCampground.author.id.equals(currentUser._id)){ %>
                     <a class="btn btn-xs btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
                     <form id="delete-form" action="/campgrounds/<%= campground.id_%>?_method=DELETE" method="POST">
                         <button class="btn btn-xs btn-danger">Delete</button>
-                    </form>
+                    </form>                    
+                    <% } %>
                 </div>
             </div>
             <div class="well">
